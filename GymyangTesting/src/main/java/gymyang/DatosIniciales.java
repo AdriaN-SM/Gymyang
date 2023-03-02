@@ -25,7 +25,7 @@ public class DatosIniciales {
         try {
             transaction.begin();
             MonitorDAOImpl mdaoi = new MonitorDAOImpl(em);
-            
+            System.out.println("Hola mundo!");
             ClaseDAOImpl cdaoi = new ClaseDAOImpl(em);
             Clase c1 = new Clase("Yoga", "15:00", "16:00", 20);
             Clase c2 = new Clase("Boxeo", "15:00", "16:00", 15);
