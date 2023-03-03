@@ -47,6 +47,12 @@ public class Monitor implements Serializable {
     public Monitor() {
     }
 
+    public Monitor(String nombre, String apellidos) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+    
+
     public Monitor(Integer id) {
         this.id = id;
     }
