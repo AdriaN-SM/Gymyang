@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ import javax.swing.JPanel;
  * @author alumnoDAM
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Principal
      */
@@ -33,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelPrincipal = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuInstalaciones = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -42,22 +43,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuItemMonitores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(400, 400));
 
-        javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
-        jPanelPrincipal.setLayout(jPanelPrincipalLayout);
-        jPanelPrincipalLayout.setHorizontalGroup(
-            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 641, Short.MAX_VALUE)
-        );
-        jPanelPrincipalLayout.setVerticalGroup(
-            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.CardLayout());
 
         jMenuInstalaciones.setText("Instalaciones");
-        jMenuInstalaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuInstalacionesActionPerformed(evt);
+        jMenuInstalaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuInstalacionesMouseClicked(evt);
             }
         });
         jMenuBar1.add(jMenuInstalaciones);
@@ -97,11 +90,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -111,12 +104,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemClasesActionPerformed
 
-    private void jMenuInstalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstalacionesActionPerformed
-        jPanelPrincipal.add(new PInstalaciones());
-        jPanelPrincipal.setVisible(true);
-        jPanelPrincipal.repaint();
-    }//GEN-LAST:event_jMenuInstalacionesActionPerformed
-
     private void jMenuMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMonitoresActionPerformed
 
     }//GEN-LAST:event_jMenuMonitoresActionPerformed
@@ -124,6 +111,13 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItemMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMonitoresActionPerformed
         
     }//GEN-LAST:event_jMenuItemMonitoresActionPerformed
+
+    private void jMenuInstalacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuInstalacionesMouseClicked
+        jPanel1.removeAll();
+        jPanel1.add(new PInstalaciones());
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jMenuInstalacionesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -167,6 +161,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemClases;
     private javax.swing.JMenuItem jMenuItemMonitores;
     private javax.swing.JMenu jMenuMonitores;
-    private javax.swing.JPanel jPanelPrincipal;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
