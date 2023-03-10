@@ -4,6 +4,13 @@
  */
 package interfaz;
 
+import java.awt.FlowLayout;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author alumnoDAM
@@ -26,10 +33,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        jPanelPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuInstalaciones = new javax.swing.JMenu();
-        jMenuItemInstalaciones = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemClases = new javax.swing.JMenuItem();
         jMenuMonitores = new javax.swing.JMenu();
@@ -37,15 +43,15 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
+        jPanelPrincipal.setLayout(jPanelPrincipalLayout);
+        jPanelPrincipalLayout.setHorizontalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 641, Short.MAX_VALUE)
         );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+        jPanelPrincipalLayout.setVerticalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
         );
 
         jMenuInstalaciones.setText("Instalaciones");
@@ -54,15 +60,6 @@ public class Principal extends javax.swing.JFrame {
                 jMenuInstalacionesActionPerformed(evt);
             }
         });
-
-        jMenuItemInstalaciones.setText("GymYang Instalaciones");
-        jMenuItemInstalaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInstalacionesActionPerformed(evt);
-            }
-        });
-        jMenuInstalaciones.add(jMenuItemInstalaciones);
-
         jMenuBar1.add(jMenuInstalaciones);
 
         jMenu2.setText("Clases");
@@ -100,46 +97,32 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasesActionPerformed
-        Clases clases = new Clases();
-        escritorio.add(clases);
-        clases.show();
+        
     }//GEN-LAST:event_jMenuItemClasesActionPerformed
 
     private void jMenuInstalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstalacionesActionPerformed
-
+        jPanelPrincipal.add(new PInstalaciones());
+        jPanelPrincipal.setVisible(true);
+        jPanelPrincipal.repaint();
     }//GEN-LAST:event_jMenuInstalacionesActionPerformed
 
     private void jMenuMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMonitoresActionPerformed
 
     }//GEN-LAST:event_jMenuMonitoresActionPerformed
 
-    private void jMenuItemInstalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstalacionesActionPerformed
-        Instalaciones instalaciones = new Instalaciones();
-        escritorio.add(instalaciones);
-        instalaciones.show();
-    }//GEN-LAST:event_jMenuItemInstalacionesActionPerformed
-
     private void jMenuItemMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMonitoresActionPerformed
-        Monitores monitores = new Monitores();
-        escritorio.add(monitores);
-        monitores.show();
+        
     }//GEN-LAST:event_jMenuItemMonitoresActionPerformed
 
     /**
@@ -178,13 +161,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuInstalaciones;
     private javax.swing.JMenuItem jMenuItemClases;
-    private javax.swing.JMenuItem jMenuItemInstalaciones;
     private javax.swing.JMenuItem jMenuItemMonitores;
     private javax.swing.JMenu jMenuMonitores;
+    private javax.swing.JPanel jPanelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
