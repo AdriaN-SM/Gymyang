@@ -7,6 +7,7 @@
 package gymyang;
 
 import EntityDAO.ClaseDAOImpl;
+import interfaz.Login;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -38,6 +39,8 @@ public class Gymyang {
         try {
             transaction.begin();
             DatosIniciales.insertarDatos();
+            Login login = new Login();
+            login.setVisible(true);
             transaction.commit();
         } finally {
             if (transaction.isActive()) {

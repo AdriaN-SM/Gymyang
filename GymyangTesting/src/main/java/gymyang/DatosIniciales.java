@@ -8,6 +8,8 @@ package gymyang;
 import EntityDAO.ClaseDAOImpl;
 import EntityDAO.MaterialDAOImpl;
 import EntityDAO.MonitorDAOImpl;
+import EntityDAO.UsuarioDAOImpl;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -15,6 +17,7 @@ import javax.persistence.Persistence;
 import modelo.Clase;
 import modelo.Material;
 import modelo.Monitor;
+import modelo.Usuario;
 
 /**
  *
@@ -64,6 +67,11 @@ public class DatosIniciales {
             cdaoi.save(c3);
             cdaoi.save(c4);
             cdaoi.save(c5);
+            UsuarioDAOImpl udaoi = new UsuarioDAOImpl(em);
+            Usuario u1 = new Usuario("admin", "admin", "admin@admin.com", new Date(120, 1, 1), true, "admin");
+            Usuario u2 = new Usuario("prueba", "apellidoUno", "pruebaapellidouno@gmail.com", new Date(125, 7, 20), false, "prueba");
+            udaoi.save(u1);
+            udaoi.save(u2);
             transaction.commit();
         } finally {
             if (transaction.isActive()) {

@@ -55,14 +55,20 @@ public class Principal extends javax.swing.JFrame {
         jMenuMonitores = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
-        setSize(new java.awt.Dimension(800, 600));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(815, 600));
+        setMinimumSize(new java.awt.Dimension(815, 600));
+        setPreferredSize(new java.awt.Dimension(815, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(815, 600));
 
-        jPanelPrincipal.setPreferredSize(new java.awt.Dimension(780, 420));
+        jPanelPrincipal.setPreferredSize(new java.awt.Dimension(795, 420));
         jPanelPrincipal.setLayout(new java.awt.CardLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/cintas_de_correr800x450.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 150));
+        jLabel1.setMaximumSize(new java.awt.Dimension(810, 150));
+        jLabel1.setMinimumSize(new java.awt.Dimension(810, 150));
+        jLabel1.setPreferredSize(new java.awt.Dimension(810, 150));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(234, 30));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(234, 30));
@@ -105,10 +111,8 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
