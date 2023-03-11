@@ -4,13 +4,11 @@
  */
 package interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +21,20 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Inicio()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
+    }
+    
+    public JPanel createForm() {
+        JPanel form = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        for (int index = 0; index < 100; index++) {
+            form.add(new JTextField(10), gbc);
+        }
+        return form;
     }
 
     /**
@@ -34,18 +46,34 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelPrincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuInicio = new javax.swing.JMenu();
         jMenuInstalaciones = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItemClases = new javax.swing.JMenuItem();
+        jMenuClases = new javax.swing.JMenu();
         jMenuMonitores = new javax.swing.JMenu();
-        jMenuItemMonitores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
 
-        jPanel1.setLayout(new java.awt.CardLayout());
+        jPanelPrincipal.setPreferredSize(new java.awt.Dimension(780, 420));
+        jPanelPrincipal.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/cintas_de_correr800x450.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 150));
+
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(234, 30));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(234, 30));
+
+        jMenuInicio.setText("Inicio");
+        jMenuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuInicioMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenuInicio);
 
         jMenuInstalaciones.setText("Instalaciones");
         jMenuInstalaciones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -55,33 +83,20 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuInstalaciones);
 
-        jMenu2.setText("Clases");
-
-        jMenuItemClases.setText("GymYang Clases");
-        jMenuItemClases.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClasesActionPerformed(evt);
+        jMenuClases.setText("Clases");
+        jMenuClases.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuClasesMouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItemClases);
-
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuClases);
 
         jMenuMonitores.setText("Monitores");
-        jMenuMonitores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuMonitoresActionPerformed(evt);
+        jMenuMonitores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuMonitoresMouseClicked(evt);
             }
         });
-
-        jMenuItemMonitores.setText("GymYang Monitores");
-        jMenuItemMonitores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMonitoresActionPerformed(evt);
-            }
-        });
-        jMenuMonitores.add(jMenuItemMonitores);
-
         jMenuBar1.add(jMenuMonitores);
 
         setJMenuBar(jMenuBar1);
@@ -90,34 +105,50 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasesActionPerformed
-        
-    }//GEN-LAST:event_jMenuItemClasesActionPerformed
-
-    private void jMenuMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMonitoresActionPerformed
-
-    }//GEN-LAST:event_jMenuMonitoresActionPerformed
-
-    private void jMenuItemMonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMonitoresActionPerformed
-        
-    }//GEN-LAST:event_jMenuItemMonitoresActionPerformed
-
     private void jMenuInstalacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuInstalacionesMouseClicked
-        jPanel1.removeAll();
-        jPanel1.add(new PInstalaciones());
-        jPanel1.repaint();
-        jPanel1.revalidate();
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Instalaciones()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
+        
     }//GEN-LAST:event_jMenuInstalacionesMouseClicked
+
+    private void jMenuClasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClasesMouseClicked
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Clases()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
+    }//GEN-LAST:event_jMenuClasesMouseClicked
+
+    private void jMenuInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuInicioMouseClicked
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Inicio()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
+    }//GEN-LAST:event_jMenuInicioMouseClicked
+
+    private void jMenuMonitoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMonitoresMouseClicked
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Monitores()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
+    }//GEN-LAST:event_jMenuMonitoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,12 +186,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuClases;
+    private javax.swing.JMenu jMenuInicio;
     private javax.swing.JMenu jMenuInstalaciones;
-    private javax.swing.JMenuItem jMenuItemClases;
-    private javax.swing.JMenuItem jMenuItemMonitores;
     private javax.swing.JMenu jMenuMonitores;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
