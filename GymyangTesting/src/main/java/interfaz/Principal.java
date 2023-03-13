@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import modelo.Usuario;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelPrincipal.add(new JScrollPane(new Inicio()));
         jPanelPrincipal.repaint();
         jPanelPrincipal.revalidate();
+        
     }
     
     public JPanel createForm() {

@@ -38,7 +38,7 @@ public class Gymyang {
         EntityTransaction transaction = em.getTransaction();
         try {
             transaction.begin();
-            DatosIniciales.insertarDatos();
+            //DatosIniciales.insertarDatos();
             Login login = new Login();
             login.setVisible(true);
             transaction.commit();

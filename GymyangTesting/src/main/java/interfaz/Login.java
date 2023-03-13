@@ -46,6 +46,10 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GymYang Login");
+        setMaximumSize(new java.awt.Dimension(399, 173));
+        setMinimumSize(new java.awt.Dimension(399, 173));
+        setResizable(false);
 
         jLabel2.setText("Usuario:");
 
@@ -107,6 +111,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        System.out.println("\n****************COMIENZO DE LA ACCIÓN DEL BOTÓN ENTRAR****************\n");
+        
+        //AUTO AJUSTAR IMAGEN EN UNA ETIQUETA
+        //Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("rutaDeLaImagen"));
+        //etiqueta.setIcon(new ImageIcon(img.getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
@@ -118,16 +128,17 @@ public class Login extends javax.swing.JFrame {
             
             Query q = em.createQuery("SELECT u FROM Usuario u "
                        + "WHERE u.nombre='"+usuario+"' AND u.password='"+contrasegna+"'");
+            
             List<Usuario> listaUsuario = q.getResultList();
-            listaUsuario.forEach((u) -> {
-                System.out.println("\tusuario: "+u);
-            });
-            System.out.println("longitud: "+listaUsuario.size());
-//            if (!listaUsuario.isEmpty()){
-//                this.setVisible(false);
-//                Principal p = new Principal();
-//                p.setVisible(true);
-//            }
+            
+            if (!listaUsuario.isEmpty()){
+                this.setVisible(false);
+                Principal p = new Principal();
+                p.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
             transaction.commit();
         }finally {
             if (transaction.isActive()) {
