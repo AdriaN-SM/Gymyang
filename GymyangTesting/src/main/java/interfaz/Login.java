@@ -122,7 +122,7 @@ public class Login extends javax.swing.JFrame {
         EntityTransaction transaction = em.getTransaction();
         
         String usuario = jTextFieldUsuario.getText();
-        String contrasegna = jPasswordFieldContrasegna.getText();
+        String contrasegna = String.valueOf(jPasswordFieldContrasegna.getPassword());
         try{
             transaction.begin();
             
@@ -135,6 +135,7 @@ public class Login extends javax.swing.JFrame {
                 this.setVisible(false);
                 Principal p = new Principal();
                 p.setVisible(true);
+                p.jMenuPerfil.setText(usuario+" (Perfil)");
             }
             else {
                 JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);

@@ -16,7 +16,6 @@ import modelo.Usuario;
  * @author alumnoDAM
  */
 public class Principal extends javax.swing.JFrame {
-    
     /**
      * Creates new form Principal
      */
@@ -26,7 +25,6 @@ public class Principal extends javax.swing.JFrame {
         jPanelPrincipal.add(new JScrollPane(new Inicio()));
         jPanelPrincipal.repaint();
         jPanelPrincipal.revalidate();
-        
     }
     
     public JPanel createForm() {
@@ -55,6 +53,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuInstalaciones = new javax.swing.JMenu();
         jMenuClases = new javax.swing.JMenu();
         jMenuMonitores = new javax.swing.JMenu();
+        jMenuPerfil = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -107,6 +106,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuMonitores);
 
+        jMenuPerfil.setText("jMenu1");
+        jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuPerfilMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenuPerfil);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,6 +163,10 @@ public class Principal extends javax.swing.JFrame {
         jPanelPrincipal.revalidate();
     }//GEN-LAST:event_jMenuMonitoresMouseClicked
 
+    private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
+        System.out.println("PERFIL");
+    }//GEN-LAST:event_jMenuPerfilMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +209,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuInicio;
     private javax.swing.JMenu jMenuInstalaciones;
     private javax.swing.JMenu jMenuMonitores;
+    public javax.swing.JMenu jMenuPerfil;
     private javax.swing.JPanel jPanelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
