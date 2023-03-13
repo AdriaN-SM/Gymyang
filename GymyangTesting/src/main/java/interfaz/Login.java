@@ -116,14 +116,18 @@ public class Login extends javax.swing.JFrame {
         try{
             transaction.begin();
             
-            Query q = em.createQuery("SELECT u FROM usuario u "
+            Query q = em.createQuery("SELECT u FROM Usuario u "
                        + "WHERE u.nombre='"+usuario+"' AND u.password='"+contrasegna+"'");
             List<Usuario> listaUsuario = q.getResultList();
-            if (!listaUsuario.isEmpty()){
-                this.setVisible(false);
-                Principal p = new Principal();
-                p.setVisible(true);
-            }
+            listaUsuario.forEach((u) -> {
+                System.out.println("\tusuario: "+u);
+            });
+            System.out.println("longitud: "+listaUsuario.size());
+//            if (!listaUsuario.isEmpty()){
+//                this.setVisible(false);
+//                Principal p = new Principal();
+//                p.setVisible(true);
+//            }
             transaction.commit();
         }finally {
             if (transaction.isActive()) {
