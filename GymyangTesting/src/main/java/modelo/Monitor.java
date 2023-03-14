@@ -41,16 +41,51 @@ public class Monitor implements Serializable {
     private String nombre;
     @Column(name = "apellidos")
     private String apellidos;
+    @Column(name = "edad")
+    private Integer edad;
+    @Column(name = "frase")
+    private String frase;
+    @Column(name = "descripcion")
+    private String descripcion;
     @OneToMany(mappedBy = "clase_monitor_fk")
     private List<Clase> monitores;
 
     public Monitor() {
     }
 
-    public Monitor(String nombre, String apellidos) {
+    public Monitor(String nombre, String apellidos, Integer edad, String frase, String descripcion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.edad = edad;
+        this.frase = frase;
+        this.descripcion = descripcion;
     }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public String getFrase() {
+        return frase;
+    }
+
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
     
 
     public Monitor(Integer id) {

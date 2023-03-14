@@ -49,6 +49,8 @@ public class Clase implements Serializable {
     private String horaFin;
     @Column(name = "plazas")
     private Integer plazas;
+    @Column(name = "descripcion")
+    private String descripcion;
     @ManyToMany(mappedBy = "listaClases")
     private List<Usuario> listaUsuarios;
     @ManyToMany(mappedBy = "listaClases")
@@ -60,12 +62,23 @@ public class Clase implements Serializable {
     public Clase() {
     }
 
-    public Clase(String nombre, String horaInicio, String horaFin, Integer plazas) {
+    public Clase(String nombre, String horaInicio, String horaFin, Integer plazas, String descripcion) {
         this.nombre = nombre;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.plazas = plazas;
+        this.descripcion = descripcion;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
 
     public Clase(Integer id) {
         this.id = id;
