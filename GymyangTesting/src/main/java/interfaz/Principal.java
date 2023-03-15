@@ -106,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuMonitores);
 
-        jMenuPerfil.setText("jMenu1");
+        jMenuPerfil.setText("Perfil");
         jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuPerfilMouseClicked(evt);
@@ -164,7 +164,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuMonitoresMouseClicked
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
-        System.out.println("PERFIL");
+        jPanelPrincipal.removeAll();
+        jPanelPrincipal.add(new JScrollPane(new Perfil()));
+        jPanelPrincipal.repaint();
+        jPanelPrincipal.revalidate();
     }//GEN-LAST:event_jMenuPerfilMouseClicked
 
     /**

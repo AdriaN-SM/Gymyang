@@ -46,7 +46,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuPerfil">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu1"/>
+            <Property name="text" type="java.lang.String" value="Perfil"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuPerfilMouseClicked"/>

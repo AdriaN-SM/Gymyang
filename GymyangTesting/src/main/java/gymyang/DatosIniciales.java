@@ -53,11 +53,11 @@ public class DatosIniciales {
             mtdaoi.save(mt6);
             mtdaoi.save(mt7);
             ClaseDAOImpl cdaoi = new ClaseDAOImpl(em);
-            Clase c1 = new Clase("Yoga", "15:00", "16:00", 20, "En esta clase de yoga aprenderás todo lo relacionado con el yoga... \nY quien sabe, a lo mejor eres el próximo profesor de yoga.");
-            Clase c2 = new Clase("Boxeo", "15:00", "16:00", 15, "En esta clase de boxeo aprenderás todo lo relacionado con el boxeo... \nY quien sabe, a lo mejor eres el próximo Muhammad Ali.");
-            Clase c3 = new Clase("Crossfit", "17:00", "19:00", 15, "En esta clase de crossfit aprenderás todo lo relacionado con el crossfit... \nY quien sabe, a lo mejor eres el próximo Dwayne Johnson.");
-            Clase c4 = new Clase("Spinning", "15:30", "16:30", 12, "En esta clase de spinning aprenderás todo lo relacionado con el spinning... \nY quien sabe, a lo mejor eres el próximo Eddy Merckx.");
-            Clase c5 = new Clase("Pilates", "16:00", "17:00", 20, "En esta clase de pilates aprenderás todo lo relacionado con el pilates... \nY quien sabe, a lo mejor eres el próximo profesor de pilates.");
+            Clase c1 = new Clase("Yoga", "15:00", "16:00", 20, "<html>En esta clase de yoga aprenderás todo lo relacionado con el yoga... Y quien sabe, a lo mejor eres el próximo profesor de yoga.<hmtl>");
+            Clase c2 = new Clase("Boxeo", "15:00", "16:00", 15, "En esta clase de boxeo aprenderás todo lo relacionado con el boxeo... Y quien sabe, a lo mejor eres el próximo Muhammad Ali.");
+            Clase c3 = new Clase("Crossfit", "17:00", "19:00", 15, "En esta clase de crossfit aprenderás todo lo relacionado con el crossfit... Y quien sabe, a lo mejor eres el próximo Dwayne Johnson.");
+            Clase c4 = new Clase("Spinning", "15:30", "16:30", 12, "En esta clase de spinning aprenderás todo lo relacionado con el spinning... Y quien sabe, a lo mejor eres el próximo Eddy Merckx.");
+            Clase c5 = new Clase("Pilates", "16:00", "17:00", 20, "En esta clase de pilates aprenderás todo lo relacionado con el pilates... Y quien sabe, a lo mejor eres el próximo profesor de pilates.");
             cdaoi.save(c1);
             cdaoi.save(c2);
             cdaoi.save(c3);
