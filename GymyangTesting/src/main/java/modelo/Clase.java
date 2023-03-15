@@ -32,7 +32,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Clase.findByNombre", query = "SELECT c FROM Clase c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Clase.findByHoraInicio", query = "SELECT c FROM Clase c WHERE c.horaInicio = :horaInicio"),
     @NamedQuery(name = "Clase.findByHoraFin", query = "SELECT c FROM Clase c WHERE c.horaFin = :horaFin"),
-    @NamedQuery(name = "Clase.findByPlazas", query = "SELECT c FROM Clase c WHERE c.plazas = :plazas")})
+    @NamedQuery(name = "Clase.findByPlazas", query = "SELECT c FROM Clase c WHERE c.plazas = :plazas"),
+    @NamedQuery(name = "Clase.findNombres", query = "SELECT c.nombre FROM Clase c")})
 public class Clase implements Serializable {
 
     private static final long serialVersionUID = 1L;
