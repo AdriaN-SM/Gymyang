@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import gymyang.Gymyang;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -24,6 +25,10 @@ public class MonitorPanel extends javax.swing.JPanel {
     public MonitorPanel(Monitor monitor) {
         initComponents();
         this.monitor = monitor;
+        jButtonModificar.setVisible(false);
+        if (Gymyang.usuarioActual.getNombre().equals("admin")) {
+            jButtonModificar.setVisible(true);
+        }
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/META-INF/modificar.png"));
         jButtonModificar.setIcon(new ImageIcon(img.getScaledInstance(40, 34, Image.SCALE_SMOOTH)));
     }

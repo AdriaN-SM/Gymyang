@@ -10,11 +10,8 @@ import java.awt.CardLayout;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import modelo.Monitor;
 
@@ -30,7 +27,10 @@ public class Monitores extends javax.swing.JPanel {
      */
     public Monitores() {
         initComponents();
-        jButtonAgnadirMonitor.setVisible(true);
+        jButtonAgnadirMonitor.setVisible(false);
+        if (Gymyang.usuarioActual.getNombre().equals("admin")) {
+            jButtonAgnadirMonitor.setVisible(true);
+        }
         
         Query consulta = em.createNamedQuery("Monitor.findAll");
         List<Monitor> listaMonitores = consulta.getResultList();

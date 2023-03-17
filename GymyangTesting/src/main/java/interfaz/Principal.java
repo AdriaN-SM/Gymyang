@@ -4,12 +4,7 @@
  */
 package interfaz;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import modelo.Usuario;
 
 /**
  *
@@ -21,21 +16,14 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        setLocationRelativeTo(null);
         jPanelPrincipal.removeAll();
         jPanelPrincipal.add(new JScrollPane(new Inicio()));
         jPanelPrincipal.repaint();
         jPanelPrincipal.revalidate();
     }
     
-    public JPanel createForm() {
-        JPanel form = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        for (int index = 0; index < 100; index++) {
-            form.add(new JTextField(10), gbc);
-        }
-        return form;
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -170,14 +158,6 @@ public class Principal extends javax.swing.JFrame {
         jPanelPrincipal.revalidate();
     }//GEN-LAST:event_jMenuPerfilMouseClicked
     
-//    private String conseguirNombre(){
-//        String nombre = jMenuPerfil.getText();      
-//        int posicion = nombre.indexOf(" ");
-//        String nombreFinal = nombre.substring(0, posicion);
-//        
-//        return nombreFinal;
-//        
-//    }
     /**
      * @param args the command line arguments
      */

@@ -6,10 +6,7 @@
 package EntityDAO;
 
 import DAO.GenericDAoImpl;
-import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import modelo.Clase;
 import modelo.Monitor;
 
 /**
@@ -22,5 +19,5 @@ public class MonitorDAOImpl extends GenericDAoImpl<Monitor, Integer> {
         super(em);
     }
 
-
+    
 }

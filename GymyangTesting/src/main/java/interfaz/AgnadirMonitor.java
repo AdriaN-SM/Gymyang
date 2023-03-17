@@ -7,8 +7,6 @@ package interfaz;
 
 import EntityDAO.MonitorDAOImpl;
 import gymyang.Gymyang;
-import java.util.List;
-import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import modelo.Monitor;
 
@@ -24,9 +22,14 @@ public class AgnadirMonitor extends javax.swing.JFrame {
      */
     public AgnadirMonitor() {
         initComponents();
+        setLocationRelativeTo(null);
         setTitle("Añadir Monitor");
         monitor = null;
+        jButtonAgnadir.setVisible(false);
         jButtonEliminar.setVisible(false);
+        if (Gymyang.usuarioActual.getNombre().equals("admin")) {
+            jButtonAgnadir.setVisible(true);
+        }
     }
 
     /**
@@ -169,11 +172,19 @@ public class AgnadirMonitor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Los datos introducidos no son correctos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }else {
+            
+            Monitor m = mdaoi.find(monitor.getId());
             Gymyang.transaction.begin();
-            mdaoi.update(monitor);
+            m.setNombre(monitor.getNombre());
+            m.setApellidos(monitor.getApellidos());
+            m.setEdad(monitor.getEdad());
+            m.setFrase(monitor.getFrase());
+            m.setDescripcion(monitor.getDescripcion());
+            mdaoi.update(m);
+            Gymyang.transaction.commit();
             this.setVisible(false);
             JOptionPane.showMessageDialog(this, "Monitor modificado con éxito!!", "Modificado", JOptionPane.INFORMATION_MESSAGE);
-            Gymyang.transaction.commit();
+            
         }
     }//GEN-LAST:event_jButtonAgnadirActionPerformed
 

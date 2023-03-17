@@ -8,11 +8,6 @@ package interfaz;
 import gymyang.Gymyang;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import modelo.Usuario;
 
 /**
@@ -20,8 +15,6 @@ import modelo.Usuario;
  * @author david
  */
 public class Perfil extends javax.swing.JPanel {
-//    private EntityManagerFactory emf = Gymyang.emf;
-//    private EntityManager em = Gymyang.em;
 
     /**
      * Creates new form Perfil
@@ -29,9 +22,6 @@ public class Perfil extends javax.swing.JPanel {
     public Perfil() {
         initComponents();
         
-//        Query consulta = em.createNamedQuery("Usuario.findByNombre");
-//        consulta.setParameter("nombre",nombre );
-//        List<Usuario> listaUsuario = consulta.getResultList();
         Usuario u = Gymyang.usuarioActual;
         jLabelNombre.setText("<html><p><b>Nombre:  </b>"+u.getNombre()+"</p></html>");
         jLabelApellido.setText("<html><p><b>Apellidos:  </b>"+u.getApellidos()+"</p></html>");

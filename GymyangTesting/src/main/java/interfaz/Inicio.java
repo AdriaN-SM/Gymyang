@@ -42,7 +42,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabelContactos = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(780, 687));
+        setPreferredSize(new java.awt.Dimension(780, 740));
 
         jLabelInicio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelInicio.setText("INICIO");
@@ -78,7 +78,7 @@ public class Inicio extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
@@ -124,7 +124,7 @@ public class Inicio extends javax.swing.JPanel {
                         .addComponent(jLabelCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

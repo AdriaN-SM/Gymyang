@@ -6,13 +6,7 @@
 package interfaz;
 
 import gymyang.Gymyang;
-import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
@@ -28,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -112,13 +107,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        System.out.println("\n****************COMIENZO DE LA ACCIÓN DEL BOTÓN ENTRAR****************\n");
-        
-        //AUTO AJUSTAR IMAGEN EN UNA ETIQUETA
-        //Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("rutaDeLaImagen"));
-        //etiqueta.setIcon(new ImageIcon(img.getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
-        
-        
         
         String usuario = jTextFieldUsuario.getText();
         String contrasegna = String.valueOf(jPasswordFieldContrasegna.getPassword());

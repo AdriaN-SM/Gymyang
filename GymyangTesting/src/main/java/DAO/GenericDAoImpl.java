@@ -37,9 +37,8 @@ public class GenericDAoImpl<Entity, PK extends Serializable> implements GenericD
 
     @Override
     public Entity update(Entity entity) {
-//        this.sesion.persist(entity);
-//        this.sesion.refresh(entity);
         this.sesion.merge(entity);
+//        this.sesion.refresh(entity);
         //sesion.flush();
         return entity;
     }
