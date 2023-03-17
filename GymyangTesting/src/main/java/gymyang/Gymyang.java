@@ -28,14 +28,14 @@ import modelo.Usuario;
  * @author Adrian Solanas
  */
 public class Gymyang {
-
+    public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
+    public static final EntityManager em = emf.createEntityManager();
+    public static final EntityTransaction transaction = em.getTransaction();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
+        
         try {
             transaction.begin();
             //DatosIniciales.insertarDatos();

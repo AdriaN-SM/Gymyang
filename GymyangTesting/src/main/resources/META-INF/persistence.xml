@@ -6,10 +6,10 @@
     <class>modelo.Monitor</class>
     <class>modelo.Usuario</class>
     <properties>
-      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/gymyangtesting"/>
+      <property name="hibernate.connection.url" value="jdbc:postgresql://144.91.89.189:5432/gymyangtesting"/>
       <property name="hibernate.connection.username" value="postgres"/>
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-      <property name="hibernate.connection.password" value="1234"/>
+      <property name="hibernate.connection.password" value="toor"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>

@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import gymyang.Gymyang;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
@@ -117,16 +118,14 @@ public class Login extends javax.swing.JFrame {
         //Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("rutaDeLaImagen"));
         //etiqueta.setIcon(new ImageIcon(img.getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
         
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
+        
         
         String usuario = jTextFieldUsuario.getText();
         String contrasegna = String.valueOf(jPasswordFieldContrasegna.getPassword());
         try{
-            transaction.begin();
+            Gymyang.transaction.begin();
             
-            Query q = em.createQuery("SELECT u FROM Usuario u "
+            Query q = Gymyang.em.createQuery("SELECT u FROM Usuario u "
                        + "WHERE u.nombre='"+usuario+"' AND u.password='"+contrasegna+"'");
             
             List<Usuario> listaUsuario = q.getResultList();
@@ -140,13 +139,13 @@ public class Login extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            transaction.commit();
+            Gymyang.transaction.commit();
         }finally {
-            if (transaction.isActive()) {
-                transaction.rollback();
+            if (Gymyang.transaction.isActive()) {
+                Gymyang.transaction.rollback();
             }
-            em.close();
-            emf.close();
+            Gymyang.em.close();
+            Gymyang.emf.close();
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 

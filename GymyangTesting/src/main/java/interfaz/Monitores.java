@@ -5,17 +5,55 @@
  */
 package interfaz;
 
+import gymyang.Gymyang;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import modelo.Monitor;
+
 /**
  *
  * @author Adrián
  */
 public class Monitores extends javax.swing.JPanel {
-
+    private EntityManagerFactory emf = Gymyang.emf;
+    private EntityManager em = Gymyang.em;
     /**
      * Creates new form Monitores
      */
     public Monitores() {
         initComponents();
+        jButtonAgnadirMonitor.setVisible(false);
+        
+        Query consulta = em.createNamedQuery("Monitor.findAll");
+        List<Monitor> listaMonitores = consulta.getResultList();
+        int posicion = 50;
+        for (int i = 0; i < listaMonitores.size(); i++) {
+            JPanel panel = new JPanel();
+            panel.setBounds(50, posicion, 469, 161);
+            panel.setLayout(new CardLayout());
+            
+            panel.removeAll();
+            MonitorPanel monitor = new MonitorPanel();
+            String nombreApellidos = listaMonitores.get(i).getNombre()+" "+listaMonitores.get(i).getApellidos();
+            monitor.jLabelNombreApellidos.setText("<html><p><b>Nombre:</b> "+nombreApellidos+"</p></html>");
+            monitor.jLabelEdad.setText("<html><p><b>Edad:</b> "+String.valueOf(listaMonitores.get(i).getEdad())+" años</p></html>");
+            monitor.jLabelFrase.setText("<html><p><b>Frase:</b> "+listaMonitores.get(i).getFrase()+"</p></html>");
+            monitor.jLabelDescripcion.setText("<html><p><b>Descripción:</b> "+listaMonitores.get(i).getDescripcion()+"</p></html>");
+            monitor.jLabelImagen.setIcon(new ImageIcon(getClass().getResource("/META-INF/"+nombreApellidos+".jpeg")));
+            panel.add(monitor);
+            panel.repaint();
+            panel.revalidate();
+            add(panel);
+            posicion = posicion+165;
+        }
     }
 
     /**
@@ -28,46 +66,17 @@ public class Monitores extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jButtonAgnadirMonitor = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(780, 800));
+        setPreferredSize(new java.awt.Dimension(780, 850));
         setRequestFocusEnabled(false);
 
         jLabel1.setText("MONITORES DE GYYMMYANGGG!!");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/s.peinado.jpeg"))); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/roshi.jpeg"))); // NOI18N
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/arnold.jpeg"))); // NOI18N
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Nombre: Sergio Peinado\n\nEdad: 30 \n\nFrase: Ponte más fuerte que el vinagre!!\n\nDescripción: Entrenador licenciado en deporte que te va ayudar\n                      a conseguir el físico de tus sueños");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Nombre: Maestro Roshi\n\nEdad: 45  (es verdad)\n\nFrase: Me gustan las tortugas!!\n\nDescripción: Entrenó a Goku (No hace falta más explicación)");
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Nombre: Terminator arnol\n\nEdad: 38\n\nFrase: Sayonara Baby!!\n\nDescripción: Está increiblemente demasiado pero muy mamado");
-        jScrollPane3.setViewportView(jTextArea3);
 
         jLabel7.setText("CONTACTOS:");
         jLabel7.setMaximumSize(new java.awt.Dimension(100, 14));
@@ -80,15 +89,19 @@ public class Monitores extends javax.swing.JPanel {
 
         jLabel11.setText("Domingos y festivos : A descansar ");
 
+        jButtonAgnadirMonitor.setText("Añadir Monitor");
+        jButtonAgnadirMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgnadirMonitorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,48 +113,22 @@ public class Monitores extends javax.swing.JPanel {
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAgnadirMonitor)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(46, 46, 46))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3))
-                .addGap(245, 245, 245))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAgnadirMonitor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,22 +142,19 @@ public class Monitores extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAgnadirMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgnadirMonitorActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonAgnadirMonitorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAgnadirMonitor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     // End of variables declaration//GEN-END:variables
 }
