@@ -31,23 +31,24 @@ public class Gymyang {
     public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
     public static final EntityManager em = emf.createEntityManager();
     public static final EntityTransaction transaction = em.getTransaction();
+    public static Usuario usuarioActual;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        try {
+//        try {
             transaction.begin();
             //DatosIniciales.insertarDatos();
             Login login = new Login();
             login.setVisible(true);
             transaction.commit();
-        } finally {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-            em.close();
-            emf.close();
-        }
+//        } finally {
+//            if (transaction.isActive()) {
+//                transaction.rollback();
+//            }
+//            em.close();
+//            emf.close();
+//        }
     }
 }

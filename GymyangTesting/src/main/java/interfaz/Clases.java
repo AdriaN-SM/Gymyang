@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import gymyang.Gymyang;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,8 +20,8 @@ import modelo.Clase;
  * @author Adrián
  */
 public class Clases extends javax.swing.JPanel {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
-    private EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf = Gymyang.emf;
+    private EntityManager em = Gymyang.em;
     /**
      * Creates new form Clases
      */
@@ -36,11 +37,13 @@ public class Clases extends javax.swing.JPanel {
         Query clase = em.createNamedQuery("Clase.findByNombre");
         clase.setParameter("nombre", jComboBoxClases.getSelectedItem().toString());
         c = (Clase) clase.getSingleResult();
-        jLabelHoraInicio.setText(c.getHoraInicio());
-        jLabelHoraFin.setText(c.getHoraFin());
-        jLabelDescripcion.setText("<html><p>"+c.getDescripcion()+"</p></html>");
-        jLabelPlazas.setText(c.getPlazas().toString());
+        jLabelHoraInicio.setText("<html><p><b>Hora Inicio:  </b>"+c.getHoraInicio()+"</p></html>");
+        jLabelHoraFin.setText("<html><p><b>Hora Fin:  </b>"+c.getHoraFin()+"</p></html>");
+        jLabelDescripcion.setText("<html><p><b>Descripción:  </b>"+c.getDescripcion()+"</p></html>");
+        jLabelPlazas.setText("<html><p><b>Plazas:  </b>"+c.getPlazas().toString()+"</p></html>");
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/"+c.getNombre()+".jpeg"))); // NOI18N
+        jLabelClase.setText("<html><h1>"+"CLASES"+"<h1></html>");
+        jLabelContactos.setText("<html><h3>"+"Contactos:"+"<h3></html>");
     }
     
    
@@ -53,29 +56,24 @@ public class Clases extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelClase = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonApuntar = new javax.swing.JButton();
         jButtonDesapuntar = new javax.swing.JButton();
         jComboBoxClases = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
-        jLabelHoraInicio = new javax.swing.JLabel();
-        jLabelHoraFin = new javax.swing.JLabel();
-        jLabelPlazas = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabelDescripcion = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelContactos = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabelHoraInicio = new javax.swing.JLabel();
+        jLabelDescripcion = new javax.swing.JLabel();
+        jLabelPlazas = new javax.swing.JLabel();
+        jLabelHoraFin = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 560));
 
-        jLabel1.setText("CLASES");
+        jLabelClase.setText("CLASES");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/boxeo.jpeg"))); // NOI18N
 
@@ -95,77 +93,8 @@ public class Clases extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setToolTipText("");
-        jPanel1.setAutoscrolls(true);
-        jPanel1.setMaximumSize(new java.awt.Dimension(100, 200));
-
-        jLabelHoraInicio.setText("jLabel3");
-
-        jLabelHoraFin.setText("jLabel3");
-
-        jLabelPlazas.setText("jLabel3");
-
-        jLabel3.setText("Hora Inicio:");
-
-        jLabel4.setText("Hora Fin:");
-
-        jLabel5.setText("Plazas:");
-
-        jLabel6.setText("Descripción:");
-
-        jLabelDescripcion.setText("jLaberl3");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelHoraFin)
-                            .addComponent(jLabelHoraInicio)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabelPlazas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelHoraInicio)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelHoraFin)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPlazas)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 35, Short.MAX_VALUE))
-        );
-
-        jLabel7.setText("CONTACTOS:");
-        jLabel7.setMaximumSize(new java.awt.Dimension(100, 14));
+        jLabelContactos.setText("CONTACTOS:");
+        jLabelContactos.setMaximumSize(new java.awt.Dimension(100, 14));
 
         jLabel8.setText("Dirección : C/Albondiga 5");
 
@@ -175,6 +104,14 @@ public class Clases extends javax.swing.JPanel {
 
         jLabel11.setText("Domingos y festivos : A descansar ");
 
+        jLabelHoraInicio.setText("jLabel3");
+
+        jLabelDescripcion.setText("jLaberl3");
+
+        jLabelPlazas.setText("jLabel3");
+
+        jLabelHoraFin.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,61 +119,77 @@ public class Clases extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jComboBoxClases, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(jButtonApuntar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDesapuntar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelHoraInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(jLabelHoraFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelPlazas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(jButtonApuntar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonDesapuntar))
+                            .addComponent(jLabelContactos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
+                                .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jComboBoxClases, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabelClase, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelClase, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonApuntar)
-                    .addComponent(jButtonDesapuntar))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonApuntar)
+                            .addComponent(jButtonDesapuntar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelContactos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelHoraInicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelHoraFin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPlazas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(58, 58, 58))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,10 +203,10 @@ public class Clases extends javax.swing.JPanel {
         Query clase = em.createNamedQuery("Clase.findByNombre");
         clase.setParameter("nombre", jComboBoxClases.getSelectedItem().toString());
         c = (Clase) clase.getSingleResult();
-        jLabelHoraInicio.setText(c.getHoraInicio());
-        jLabelHoraFin.setText(c.getHoraFin());
-        jLabelDescripcion.setText("<html><p>"+c.getDescripcion()+"</p></html>");
-        jLabelPlazas.setText(c.getPlazas().toString());
+        jLabelHoraInicio.setText("<html><p><b>Hora Inicio:  </b>"+c.getHoraInicio()+"</p></html>");
+        jLabelHoraFin.setText("<html><p><b>Hora Fin:  </b>"+c.getHoraFin()+"</p></html>");
+        jLabelDescripcion.setText("<html><p><b>Descripción:  </b>"+c.getDescripcion()+"</p></html>");
+        jLabelPlazas.setText("<html><p><b>Plazas:  </b>"+c.getPlazas().toString()+"</p></html>");
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/"+c.getNombre()+".jpeg"))); // NOI18N
     }//GEN-LAST:event_jComboBoxClasesActionPerformed
 
@@ -262,21 +215,16 @@ public class Clases extends javax.swing.JPanel {
     private javax.swing.JButton jButtonApuntar;
     private javax.swing.JButton jButtonDesapuntar;
     private javax.swing.JComboBox<String> jComboBoxClases;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelClase;
+    private javax.swing.JLabel jLabelContactos;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelHoraFin;
     private javax.swing.JLabel jLabelHoraInicio;
     private javax.swing.JLabel jLabelPlazas;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

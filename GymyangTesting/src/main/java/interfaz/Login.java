@@ -122,31 +122,24 @@ public class Login extends javax.swing.JFrame {
         
         String usuario = jTextFieldUsuario.getText();
         String contrasegna = String.valueOf(jPasswordFieldContrasegna.getPassword());
-        try{
-            Gymyang.transaction.begin();
-            
-            Query q = Gymyang.em.createQuery("SELECT u FROM Usuario u "
-                       + "WHERE u.nombre='"+usuario+"' AND u.password='"+contrasegna+"'");
-            
-            List<Usuario> listaUsuario = q.getResultList();
-            
-            if (!listaUsuario.isEmpty()){
-                this.setVisible(false);
-                Principal p = new Principal();
-                p.setVisible(true);
-                p.jMenuPerfil.setText(usuario+" (Perfil)");
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            Gymyang.transaction.commit();
-        }finally {
-            if (Gymyang.transaction.isActive()) {
-                Gymyang.transaction.rollback();
-            }
-            Gymyang.em.close();
-            Gymyang.emf.close();
+        Gymyang.transaction.begin();
+
+        Query q = Gymyang.em.createQuery("SELECT u FROM Usuario u "
+                   + "WHERE u.nombre='"+usuario+"' AND u.password='"+contrasegna+"'");
+
+        List<Usuario> listaUsuario = q.getResultList();
+
+        if (!listaUsuario.isEmpty()){
+            this.setVisible(false);
+            Principal p = new Principal();
+            p.setVisible(true);
+            p.jMenuPerfil.setText(usuario+" (Perfil)");
+            Gymyang.usuarioActual = listaUsuario.get(0);
         }
+        else {
+            JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        Gymyang.transaction.commit();
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**

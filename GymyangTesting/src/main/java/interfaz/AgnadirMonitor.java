@@ -7,6 +7,8 @@ package interfaz;
 
 import EntityDAO.MonitorDAOImpl;
 import gymyang.Gymyang;
+import java.util.List;
+import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import modelo.Monitor;
 
@@ -15,13 +17,16 @@ import modelo.Monitor;
  * @author Adrián
  */
 public class AgnadirMonitor extends javax.swing.JFrame {
-
+    MonitorDAOImpl mdaoi = new MonitorDAOImpl(Gymyang.em);
+    public Monitor monitor;
     /**
      * Creates new form AgnadirMonitor
      */
     public AgnadirMonitor() {
         initComponents();
         setTitle("Añadir Monitor");
+        monitor = null;
+        jButtonEliminar.setVisible(false);
     }
 
     /**
@@ -45,6 +50,7 @@ public class AgnadirMonitor extends javax.swing.JFrame {
         jTextAreaDescripcion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButtonAgnadir = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +77,13 @@ public class AgnadirMonitor extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +92,8 @@ public class AgnadirMonitor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAgnadir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -123,7 +138,9 @@ public class AgnadirMonitor extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAgnadir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAgnadir)
+                    .addComponent(jButtonEliminar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -131,24 +148,47 @@ public class AgnadirMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAgnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgnadirActionPerformed
-        if(jTextFieldNombre.getText()!=null &&
+        if(monitor == null) {
+            if(jTextFieldNombre.getText()!=null &&
            jTextFieldApellidos.getText()!=null &&
            jTextFieldFrase.getText()!=null &&
            jTextAreaDescripcion.getText()!=null && 
            jSpinnerEdad.getComponentCount()>0) {
-            MonitorDAOImpl mdaoi = new MonitorDAOImpl(Gymyang.em);
-            Monitor m = new Monitor(jTextFieldNombre.getText(), 
-                                    jTextFieldApellidos.getText(), 
-                                    jSpinnerEdad.getComponentCount(), 
-                                    jTextFieldFrase.getText(), 
-                                    jTextAreaDescripcion.getText());
-            mdaoi.save(m);
-            Gymyang.transaction.commit();
-            JOptionPane.showMessageDialog(this, "Monitor añadido con éxito!!", "Añadido", JOptionPane.INFORMATION_MESSAGE);
+                Gymyang.transaction.begin();
+
+                Monitor m = new Monitor(jTextFieldNombre.getText(), 
+                                        jTextFieldApellidos.getText(), 
+                                        jSpinnerEdad.getComponentCount(), 
+                                        jTextFieldFrase.getText(), 
+                                        jTextAreaDescripcion.getText());
+                mdaoi.save(m);
+                Gymyang.transaction.commit();
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Monitor añadido con éxito!!", "Añadido", JOptionPane.INFORMATION_MESSAGE);
+            }else {
+                JOptionPane.showMessageDialog(this, "Los datos introducidos no son correctos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }else {
-            JOptionPane.showMessageDialog(this, "Los datos introducidos no son correctos.", "Error", JOptionPane.ERROR_MESSAGE);
+            Gymyang.transaction.begin();
+            mdaoi.update(monitor);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Monitor modificado con éxito!!", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+            Gymyang.transaction.commit();
         }
     }//GEN-LAST:event_jButtonAgnadirActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        Gymyang.transaction.begin();
+        if (mdaoi.delete(monitor)) {
+            Gymyang.transaction.commit();
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Monitor eliminado con éxito!!", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "No se ha encontrado el monitor a eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,17 +226,18 @@ public class AgnadirMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgnadir;
+    public javax.swing.JButton jButtonAgnadir;
+    public javax.swing.JButton jButtonEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinnerEdad;
-    private javax.swing.JTextArea jTextAreaDescripcion;
-    private javax.swing.JTextField jTextFieldApellidos;
-    private javax.swing.JTextField jTextFieldFrase;
-    private javax.swing.JTextField jTextFieldNombre;
+    public javax.swing.JSpinner jSpinnerEdad;
+    public javax.swing.JTextArea jTextAreaDescripcion;
+    public javax.swing.JTextField jTextFieldApellidos;
+    public javax.swing.JTextField jTextFieldFrase;
+    public javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

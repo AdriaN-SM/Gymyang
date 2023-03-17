@@ -5,17 +5,27 @@
  */
 package interfaz;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import modelo.Monitor;
+
 /**
  *
  * @author Adrián
  */
 public class MonitorPanel extends javax.swing.JPanel {
 
+    private Monitor monitor;
+    
     /**
      * Creates new form Monitor
      */
-    public MonitorPanel() {
+    public MonitorPanel(Monitor monitor) {
         initComponents();
+        this.monitor = monitor;
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/META-INF/modificar.png"));
+        jButtonModificar.setIcon(new ImageIcon(img.getScaledInstance(40, 34, Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -32,6 +42,7 @@ public class MonitorPanel extends javax.swing.JPanel {
         jLabelEdad = new javax.swing.JLabel();
         jLabelFrase = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
+        jButtonModificar = new javax.swing.JButton();
 
         jLabelNombreApellidos.setText("jLabel2");
 
@@ -40,6 +51,15 @@ public class MonitorPanel extends javax.swing.JPanel {
         jLabelFrase.setText("jLabel1");
 
         jLabelDescripcion.setText("jLabel1");
+
+        jButtonModificar.setMaximumSize(new java.awt.Dimension(40, 34));
+        jButtonModificar.setMinimumSize(new java.awt.Dimension(40, 34));
+        jButtonModificar.setPreferredSize(new java.awt.Dimension(40, 34));
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -53,7 +73,10 @@ public class MonitorPanel extends javax.swing.JPanel {
                     .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                     .addComponent(jLabelFrase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelNombreApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNombreApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -62,8 +85,9 @@ public class MonitorPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jLabelNombreApellidos)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelNombreApellidos)
+                            .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelEdad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -75,8 +99,23 @@ public class MonitorPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        AgnadirMonitor a = new AgnadirMonitor();
+        a.setTitle("Modificar/Eliminar Monitor");
+        a.jButtonEliminar.setVisible(true);
+        a.jButtonAgnadir.setText("Modificar");
+        a.jTextFieldNombre.setText(monitor.getNombre());
+        a.jTextFieldApellidos.setText(monitor.getApellidos());
+        a.jSpinnerEdad.setValue(monitor.getEdad());
+        a.jTextFieldFrase.setText(monitor.getFrase());
+        a.jTextAreaDescripcion.setText(monitor.getDescripcion());
+        a.monitor = monitor;
+        a.setVisible(true);
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonModificar;
     public javax.swing.JLabel jLabelDescripcion;
     public javax.swing.JLabel jLabelEdad;
     public javax.swing.JLabel jLabelFrase;

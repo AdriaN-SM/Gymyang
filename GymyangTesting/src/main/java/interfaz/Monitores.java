@@ -30,7 +30,7 @@ public class Monitores extends javax.swing.JPanel {
      */
     public Monitores() {
         initComponents();
-        jButtonAgnadirMonitor.setVisible(false);
+        jButtonAgnadirMonitor.setVisible(true);
         
         Query consulta = em.createNamedQuery("Monitor.findAll");
         List<Monitor> listaMonitores = consulta.getResultList();
@@ -41,7 +41,7 @@ public class Monitores extends javax.swing.JPanel {
             panel.setLayout(new CardLayout());
             
             panel.removeAll();
-            MonitorPanel monitor = new MonitorPanel();
+            MonitorPanel monitor = new MonitorPanel(listaMonitores.get(i));
             String nombreApellidos = listaMonitores.get(i).getNombre()+" "+listaMonitores.get(i).getApellidos();
             monitor.jLabelNombreApellidos.setText("<html><p><b>Nombre:</b> "+nombreApellidos+"</p></html>");
             monitor.jLabelEdad.setText("<html><p><b>Edad:</b> "+String.valueOf(listaMonitores.get(i).getEdad())+" años</p></html>");
@@ -144,7 +144,8 @@ public class Monitores extends javax.swing.JPanel {
 
     private void jButtonAgnadirMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgnadirMonitorActionPerformed
         // TODO add your handling code here:
-        
+        AgnadirMonitor a = new AgnadirMonitor();
+        a.setVisible(true);
     }//GEN-LAST:event_jButtonAgnadirMonitorActionPerformed
 
 

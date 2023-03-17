@@ -169,7 +169,15 @@ public class Principal extends javax.swing.JFrame {
         jPanelPrincipal.repaint();
         jPanelPrincipal.revalidate();
     }//GEN-LAST:event_jMenuPerfilMouseClicked
-
+    
+//    private String conseguirNombre(){
+//        String nombre = jMenuPerfil.getText();      
+//        int posicion = nombre.indexOf(" ");
+//        String nombreFinal = nombre.substring(0, posicion);
+//        
+//        return nombreFinal;
+//        
+//    }
     /**
      * @param args the command line arguments
      */
