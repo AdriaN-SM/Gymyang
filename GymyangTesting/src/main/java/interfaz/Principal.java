@@ -165,11 +165,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
         jPanelPrincipal.removeAll();
-        jPanelPrincipal.add(new JScrollPane(new Perfil()));
+        jPanelPrincipal.add(new JScrollPane(new Perfil(conseguirNombre())));
         jPanelPrincipal.repaint();
         jPanelPrincipal.revalidate();
     }//GEN-LAST:event_jMenuPerfilMouseClicked
-
+    
+    private String conseguirNombre(){
+        String nombre = jMenuPerfil.getText();      
+        int posicion = nombre.indexOf(" ");
+        String nombreFinal = nombre.substring(0, posicion);
+        
+        return nombreFinal;
+        
+    }
     /**
      * @param args the command line arguments
      */

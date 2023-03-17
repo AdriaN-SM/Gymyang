@@ -4,19 +4,43 @@
  */
 package interfaz;
 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import modelo.Usuario;
+
 /**
  *
  * @author david
  */
 public class Perfil extends javax.swing.JPanel {
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("GymyangPU");
+    private EntityManager em = emf.createEntityManager();
 
     /**
      * Creates new form Perfil
      */
-    public Perfil() {
+    public Perfil(String nombre) {
         initComponents();
+        Query consulta = em.createNamedQuery("Usuario.findByNombre");
+        consulta.setParameter("nombre",nombre );
+        List<Usuario> listaUsuario = consulta.getResultList();
+        Usuario u = listaUsuario.get(0);
+        jLabelNombre.setText("<html><b>Nombre:  </b>"+u.getNombre()+"</html");
+        jLabelApellido.setText("<html><b>Apellidos:  </b>"+u.getApellidos()+"</html");
+        jLabelContraseña.setText("<html><b>Contraseña:  </b>"+u.getPassword()+"</html");
+        jLabelEmail.setText("<html><b>E-mail:  </b>"+u.getEmail()+"</html");
+        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = formato.format(u.getFechaNac());
+        jLabelNacimiento.setText("<html><b>Fecha Nacimiento:  </b>"+fecha+"</html");
+        jLabel1.setText("<html><h1>"+"PERFIL"+"<h1></html>");
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,37 +52,79 @@ public class Perfil extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabelIconoPerfil = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelContraseña = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
+        jLabelNacimiento = new javax.swing.JLabel();
+        jLabelApellido = new javax.swing.JLabel();
 
         jLabel1.setText("PERFIL");
+
+        jLabelIconoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/Avatar2.png"))); // NOI18N
+
+        jLabelNombre.setText("jLabel2");
+
+        jLabelContraseña.setText("jLabel2");
+
+        jLabelEmail.setText("jLabel2");
+
+        jLabelNacimiento.setText("jLabel2");
+
+        jLabelApellido.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 450, Short.MAX_VALUE)
-                .addComponent(jLabelIconoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabelIconoPerfil)
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelContraseña)
+                            .addComponent(jLabelEmail)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelNombre)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabelApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelIconoPerfil)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelIconoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(389, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelApellido)
+                            .addComponent(jLabelNombre))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelContraseña)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelNacimiento)))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelApellido;
+    private javax.swing.JLabel jLabelContraseña;
+    private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelIconoPerfil;
+    private javax.swing.JLabel jLabelNacimiento;
+    private javax.swing.JLabel jLabelNombre;
     // End of variables declaration//GEN-END:variables
 }
