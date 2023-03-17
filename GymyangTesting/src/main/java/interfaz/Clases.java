@@ -14,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import modelo.Clase;
 
 /**
- *
+ * Panel para visualizar las clases
  * @author Adrián
  */
 public class Clases extends javax.swing.JPanel {

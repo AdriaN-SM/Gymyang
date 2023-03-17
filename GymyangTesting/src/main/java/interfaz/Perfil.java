@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import modelo.Usuario;
 
 /**
- *
+ * Panel para mostrar el perfil del usuario
  * @author david
  */
 public class Perfil extends javax.swing.JPanel {

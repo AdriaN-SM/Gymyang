@@ -27,14 +27,22 @@ public class GenericDAoImpl<Entity, PK extends Serializable> implements GenericD
         this.entityClass = (Class<Entity>) genericSuperclass
                 .getActualTypeArguments()[0];
     }
-
+/**
+ * Método para guardar un registro
+ * @param entity
+ * @return 
+ */
     @Override
     public Entity save(Entity entity) {
         this.sesion.persist(entity);
 //        sesion.flush();
         return entity;
     }
-
+/**
+ * Método para actualizar un registro
+ * @param entity
+ * @return 
+ */
     @Override
     public Entity update(Entity entity) {
         this.sesion.merge(entity);
@@ -42,24 +50,39 @@ public class GenericDAoImpl<Entity, PK extends Serializable> implements GenericD
         //sesion.flush();
         return entity;
     }
-
+/**
+ * Método para buscar un registro según su id
+ * @param id
+ * @return 
+ */
     @Override
     public Entity find(PK id) {
         return (Entity) sesion.find(entityClass, id);
     }
-
+/**
+ * Método para obtener una lista de todos los registros de una tabla
+ * @return 
+ */
     @Override
     public List<Entity> findAll() {
         return (List<Entity>) sesion.createQuery("FROM " + entityClass.getName(), entityClass).getResultList();
     }
-
+/**
+ * Método para eliminar un registro
+ * @param entity
+ * @return 
+ */
     @Override
     public Boolean delete(Entity entity) {
         sesion.remove(entity);
         //sesion.flush();
         return true;
     }
-
+/**
+ * Método para eliminar un registro según su id
+ * @param id
+ * @return 
+ */
     @Override
     public Boolean deleteById(PK id) {
         delete(find(id));

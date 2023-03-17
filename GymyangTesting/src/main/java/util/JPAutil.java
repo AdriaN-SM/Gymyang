@@ -9,7 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
+ * Clase utilizada para generar las sesiones a la base de datos
  * @author adria
  */
 public class JPAutil {

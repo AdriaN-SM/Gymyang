@@ -20,7 +20,7 @@ import modelo.Monitor;
 import modelo.Usuario;
 
 /**
- *
+ * Clase dedicada a insertar datos iniciales en la base de datos
  * @author adria
  */
 public class DatosIniciales {

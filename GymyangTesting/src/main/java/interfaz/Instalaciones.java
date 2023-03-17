@@ -6,7 +6,7 @@
 package interfaz;
 
 /**
- *
+ * Panel para visualizar las instalaciones del gimnasio
  * @author Adrián
  */
 public class Instalaciones extends javax.swing.JPanel {

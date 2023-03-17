@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import modelo.Monitor;
 
 /**
- *
+ * Panel para mostrar un monitor
  * @author Adrián
  */
 public class MonitorPanel extends javax.swing.JPanel {

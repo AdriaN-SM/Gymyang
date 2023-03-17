@@ -21,7 +21,7 @@ import modelo.Usuario;
 
 /**
  *
- *
+ * Clase principal de la aplicación
  *
  * @since 21.02.2023
  * Fecha de modificación: 21.02.2023

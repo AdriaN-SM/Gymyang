@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Entidad que mapea la tabla Monitor de la base de datos
  * @author adria
  */
 @Entity

@@ -25,7 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * Entidad que mapea la tabla Usuario de la base de datos
  * @author adria
  */
 @Entity

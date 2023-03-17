@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import modelo.Monitor;
 
 /**
- *
+ * Panel para mostrar los monitores
  * @author Adrián
  */
 public class Monitores extends javax.swing.JPanel {

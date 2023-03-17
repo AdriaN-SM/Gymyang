@@ -21,7 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- *
+ * Entidad que mapea la tabla Clase de la base de datos
  * @author adria
  */
 @Entity

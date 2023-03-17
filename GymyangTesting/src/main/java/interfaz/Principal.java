@@ -7,7 +7,8 @@ package interfaz;
 import javax.swing.JScrollPane;
 
 /**
- *
+ * Ventana principal de la aplicación enla que se irán cargando los diferentes paneles
+ * en función de la opciónd el menú que seleccione el usuario
  * @author alumnoDAM
  */
 public class Principal extends javax.swing.JFrame {

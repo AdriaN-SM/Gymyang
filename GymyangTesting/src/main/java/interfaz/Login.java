@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 
 /**
- *
+ * Ventana de login de la aplicación
  * @author adria
  */
 public class Login extends javax.swing.JFrame {

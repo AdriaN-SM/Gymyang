@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import modelo.Monitor;
 
 /**
- *
+ * Ventana para añadir un nuevo monitor
  * @author Adrián
  */
 public class AgnadirMonitor extends javax.swing.JFrame {

@@ -14,7 +14,7 @@ import modelo.Monitor;
 import modelo.Usuario;
 
 /**
- *
+ * Implementación DAO para la entidad Usuario
  * @author adria
  */
 public class UsuarioDAOImpl extends GenericDAoImpl<Usuario, Integer> {

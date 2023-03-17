@@ -14,7 +14,7 @@ import modelo.Material;
 import modelo.Monitor;
 
 /**
- *
+ * Implementación DAO para la entidad Material
  * @author adria
  */
 public class MaterialDAOImpl extends GenericDAoImpl<Material, Integer> {

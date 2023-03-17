@@ -6,7 +6,7 @@
 package interfaz;
 
 /**
- *
+ * Panel de la pantalla de inicio de la aplicación
  * @author Adrián
  */
 public class Inicio extends javax.swing.JPanel {

@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import modelo.Monitor;
 
 /**
- *
+ * Implementación DAO para la entidad Monitor
  * @author adria
  */
 public class MonitorDAOImpl extends GenericDAoImpl<Monitor, Integer> {

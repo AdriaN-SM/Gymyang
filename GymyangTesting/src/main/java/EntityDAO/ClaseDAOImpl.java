@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import modelo.Clase;
 
 /**
- *
+ * Implementación DAO para la entidad Clase
  * @author adria
  */
 public class ClaseDAOImpl extends GenericDAoImpl<Clase, Integer> {
